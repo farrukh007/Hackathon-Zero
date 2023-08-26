@@ -58,7 +58,7 @@ export default function EditPage({
             Blur Faces
           </Button>
           <Button onClick={() => setTransformation("blur")}>Apply Blur</Button>
-          <Button onClick={() => setTransformation("tint")}>Apply Tint</Button>
+          {/* <Button onClick={() => setTransformation("tint")}>Apply Tint</Button> */}
           <Button onClick={() => setTransformation("grayscale")}>
             Convert to Gray
           </Button>
@@ -92,14 +92,16 @@ export default function EditPage({
               height={1400}
             />
           )}
-          {transformation === "tint" && (
+
+          {/* {transformation === "tint" && (
             <Image
               src={`https://res.cloudinary.com/${cloudName}/image/upload/e_tint:80:blue:blueviolet/${publicId}`}
               alt={"Tint Image"}
               width={1200}
               height={1400}
             />
-          )}
+          )} */}
+
           {transformation === "grayscale" && (
             <Image
               src={`https://res.cloudinary.com/${cloudName}/image/upload/e_grayscale/${publicId}`}
