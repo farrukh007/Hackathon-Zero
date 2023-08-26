@@ -120,16 +120,6 @@ export default function EditPage({
             />
           )}
 
-          {/* {transformation === "blurFaces" && (
-            <CldImage
-              src={publicId}
-              width="1200"
-              height="1400"
-              blurFaces="1200"
-              alt="Some Blur Faces Image"
-            />
-          )} */}
-
           {transformation === "bg-remove" && (
             <CldImage
               src={publicId}
