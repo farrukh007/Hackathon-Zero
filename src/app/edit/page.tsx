@@ -93,14 +93,14 @@ export default function EditPage({
             />
           )}
 
-          {/* {transformation === "tint" && (
+          {transformation === "blurFaces" && (
             <Image
-              src={`https://res.cloudinary.com/${cloudName}/image/upload/e_tint:80:blue:blueviolet/${publicId}`}
-              alt={"Tint Image"}
+              src={`https://res.cloudinary.com/${cloudName}/image/upload/e_blurFaces:800/${publicId}`}
+              alt={"Blur Face Image"}
               width={1200}
               height={1400}
             />
-          )} */}
+          )}
 
           {transformation === "grayscale" && (
             <Image
@@ -120,7 +120,7 @@ export default function EditPage({
             />
           )}
 
-          {transformation === "blurFaces" && (
+          {/* {transformation === "blurFaces" && (
             <CldImage
               src={publicId}
               width="1200"
@@ -128,7 +128,7 @@ export default function EditPage({
               blurFaces="1200"
               alt="Some Blur Faces Image"
             />
-          )}
+          )} */}
 
           {transformation === "bg-remove" && (
             <CldImage
