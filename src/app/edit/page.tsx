@@ -99,8 +99,8 @@ export default function EditPage({
               width={1200}
               height={1400}
             />
-          )} */}
-
+          )}
+ */}
           {transformation === "grayscale" && (
             <Image
               src={`https://res.cloudinary.com/${cloudName}/image/upload/e_grayscale/${publicId}`}
