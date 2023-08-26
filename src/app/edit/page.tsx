@@ -3,7 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { publicDecrypt } from "crypto";
 import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function EditPage({
@@ -21,9 +23,12 @@ export default function EditPage({
     | "pixelate"
     | "bg-remove"
     | "blurFaces"
+    | "tint"
   >();
   const [pendingPrompt, setPendingPrompt] = useState("");
   const [prompt, setPrompt] = useState("");
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
   return (
     <section>
       <div className="flex flex-col gap-8">
@@ -53,6 +58,7 @@ export default function EditPage({
             Blur Faces
           </Button>
           <Button onClick={() => setTransformation("blur")}>Apply Blur</Button>
+          {/* <Button onClick={() => setTransformation("tint")}>Apply Tint</Button> */}
           <Button onClick={() => setTransformation("grayscale")}>
             Convert to Gray
           </Button>
@@ -77,43 +83,52 @@ export default function EditPage({
               }}
             />
           )}
+
           {transformation === "blur" && (
-            <CldImage
-              src={publicId}
-              width="1200"
-              height="1400"
-              blur="800"
-              alt="Some Image"
+            <Image
+              src={`https://res.cloudinary.com/${cloudName}/image/upload/e_blur:800/${publicId}`}
+              alt={"Blur Image"}
+              width={1200}
+              height={1400}
             />
           )}
+          {/* {transformation === "blurFaces" && (
+            <Image
+              src={`https://res.cloudinary.com/${cloudName}/image/upload/e_blurFaces:1200/${publicId}`}
+              alt={"Blur Image"}
+              width={1200}
+              height={1400}
+            />
+          )} */}
+
+          {transformation === "grayscale" && (
+            <Image
+              src={`https://res.cloudinary.com/${cloudName}/image/upload/e_grayscale/${publicId}`}
+              alt={"Grayscale Image"}
+              width={1200}
+              height={1400}
+            />
+          )}
+
+          {transformation === "pixelate" && (
+            <Image
+              src={`https://res.cloudinary.com/${cloudName}/image/upload/e_pixelate:20/${publicId}`}
+              alt={"Pixelate Face Image"}
+              width={1200}
+              height={1400}
+            />
+          )}
+
           {transformation === "blurFaces" && (
             <CldImage
               src={publicId}
               width="1200"
               height="1400"
               blurFaces="1200"
-              alt="Some Image"
+              alt="Some Blur Faces Image"
             />
           )}
 
-          {transformation === "grayscale" && (
-            <CldImage
-              src={publicId}
-              width="1200"
-              height="1400"
-              grayscale
-              alt="Some Image"
-            />
-          )}
-          {transformation === "pixelate" && (
-            <CldImage
-              src={publicId}
-              width="1200"
-              height="1400"
-              pixelate
-              alt="Some Image"
-            />
-          )}
           {transformation === "bg-remove" && (
             <CldImage
               src={publicId}
