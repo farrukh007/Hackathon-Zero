@@ -120,7 +120,7 @@ export default function RootLayout({
               height="40"
               alt="Album Icon Image"
             />
-            Hackathone Zero Photos App
+            FotoXplorer
             <div className="ml-auto flex items-center space-x-4">
               <Avatar>
                 <AvatarImage src="https://github.com/shadcn.png" />
